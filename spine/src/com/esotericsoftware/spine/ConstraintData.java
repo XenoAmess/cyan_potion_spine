@@ -36,7 +36,9 @@ abstract public class ConstraintData {
 	boolean skinRequired;
 
 	public ConstraintData (String name) {
-		if (name == null) throw new IllegalArgumentException("name cannot be null.");
+		if (name == null) {
+			throw new IllegalArgumentException("name cannot be null.");
+		}
 		this.name = name;
 	}
 
@@ -66,6 +68,7 @@ abstract public class ConstraintData {
 		this.skinRequired = skinRequired;
 	}
 
+	@Override
 	public String toString () {
 		return name;
 	}

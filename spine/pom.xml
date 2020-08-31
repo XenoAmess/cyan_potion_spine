@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.xenoamess.cyan_potion</groupId>
         <artifactId>parent</artifactId>
-        <version>0.164.2</version>
+        <version>0.164.3</version>
     </parent>
 
     <artifactId>spine</artifactId>
@@ -57,6 +57,7 @@
         <dependency>
             <groupId>com.xenoamess.cyan_potion</groupId>
             <artifactId>base</artifactId>
+            <version>${project.parent.version}</version>
         </dependency>
     </dependencies>
 </project>

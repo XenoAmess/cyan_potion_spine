@@ -40,7 +40,9 @@ public class EventData {
 	float volume, balance;
 
 	public EventData (String name) {
-		if (name == null) throw new IllegalArgumentException("name cannot be null.");
+		if (name == null) {
+			throw new IllegalArgumentException("name cannot be null.");
+		}
 		this.name = name;
 	}
 
@@ -65,7 +67,9 @@ public class EventData {
 	}
 
 	public void setString (String stringValue) {
-		if (stringValue == null) throw new IllegalArgumentException("stringValue cannot be null.");
+		if (stringValue == null) {
+			throw new IllegalArgumentException("stringValue cannot be null.");
+		}
 		this.stringValue = stringValue;
 	}
 
@@ -74,7 +78,9 @@ public class EventData {
 	}
 
 	public void setAudioPath (String audioPath) {
-		if (audioPath == null) throw new IllegalArgumentException("audioPath cannot be null.");
+		if (audioPath == null) {
+			throw new IllegalArgumentException("audioPath cannot be null.");
+		}
 		this.audioPath = audioPath;
 	}
 
@@ -99,6 +105,7 @@ public class EventData {
 		return name;
 	}
 
+	@Override
 	public String toString () {
 		return name;
 	}

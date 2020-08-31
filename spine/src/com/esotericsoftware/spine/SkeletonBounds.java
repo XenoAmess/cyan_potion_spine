@@ -29,11 +29,10 @@
 
 package com.esotericsoftware.spine;
 
-import com.badlogic.gdx.utils.ArrayList;
-import com.badlogic.gdx.utils.FloatArrayList;
-import com.badlogic.gdx.utils.Pool;
 import com.esotericsoftware.spine.attachments.Attachment;
 import com.esotericsoftware.spine.attachments.BoundingBoxAttachment;
+import com.xenoamess.commons.primitive.collections.lists.array_lists.FloatArrayList;
+import java.util.ArrayList;
 
 /** Collects each visible {@link BoundingBoxAttachment} and computes the world vertices for its polygon. The polygon vertices are
  * provided along with convenience methods for doing hit detection. */

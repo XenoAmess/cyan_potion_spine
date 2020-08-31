@@ -40,7 +40,9 @@ public class AnimationStateData {
 	float defaultMix;
 
 	public AnimationStateData (SkeletonData skeletonData) {
-		if (skeletonData == null) throw new IllegalArgumentException("skeletonData cannot be null.");
+		if (skeletonData == null) {
+			throw new IllegalArgumentException("skeletonData cannot be null.");
+		}
 		this.skeletonData = skeletonData;
 	}
 
@@ -54,9 +56,13 @@ public class AnimationStateData {
 	 * See {@link #setMix(Animation, Animation, float)}. */
 	public void setMix (String fromName, String toName, float duration) {
 		Animation from = skeletonData.findAnimation(fromName);
-		if (from == null) throw new IllegalArgumentException("Animation not found: " + fromName);
+		if (from == null) {
+			throw new IllegalArgumentException("Animation not found: " + fromName);
+		}
 		Animation to = skeletonData.findAnimation(toName);
-		if (to == null) throw new IllegalArgumentException("Animation not found: " + toName);
+		if (to == null) {
+			throw new IllegalArgumentException("Animation not found: " + toName);
+		}
 		setMix(from, to, duration);
 	}
 
@@ -64,8 +70,12 @@ public class AnimationStateData {
 	 * <p>
 	 * See {@link TrackEntry#mixDuration}. */
 	public void setMix (Animation from, Animation to, float duration) {
-		if (from == null) throw new IllegalArgumentException("from cannot be null.");
-		if (to == null) throw new IllegalArgumentException("to cannot be null.");
+		if (from == null) {
+			throw new IllegalArgumentException("from cannot be null.");
+		}
+		if (to == null) {
+			throw new IllegalArgumentException("to cannot be null.");
+		}
 		Key key = new Key();
 		key.a1 = from;
 		key.a2 = to;
@@ -75,8 +85,12 @@ public class AnimationStateData {
 	/** Returns the mix duration to use when changing from the specified animation to the other, or the {@link #getDefaultMix()} if
 	 * no mix duration has been set. */
 	public float getMix (Animation from, Animation to) {
-		if (from == null) throw new IllegalArgumentException("from cannot be null.");
-		if (to == null) throw new IllegalArgumentException("to cannot be null.");
+		if (from == null) {
+			throw new IllegalArgumentException("from cannot be null.");
+		}
+		if (to == null) {
+			throw new IllegalArgumentException("to cannot be null.");
+		}
 		tempKey.a1 = from;
 		tempKey.a2 = to;
 		return animationToMixTime.get(tempKey, defaultMix);
@@ -94,23 +108,38 @@ public class AnimationStateData {
 	static class Key {
 		Animation a1, a2;
 
+		@Override
 		public int hashCode () {
 			return 31 * (31 + a1.hashCode()) + a2.hashCode();
 		}
 
+		@Override
 		public boolean equals (Object obj) {
-			if (this == obj) return true;
-			if (obj == null) return false;
+			if (this == obj) {
+				return true;
+			}
+			if (obj == null) {
+				return false;
+			}
 			Key other = (Key)obj;
 			if (a1 == null) {
-				if (other.a1 != null) return false;
-			} else if (!a1.equals(other.a1)) return false;
+				if (other.a1 != null) {
+					return false;
+				}
+			} else if (!a1.equals(other.a1)) {
+				return false;
+			}
 			if (a2 == null) {
-				if (other.a2 != null) return false;
-			} else if (!a2.equals(other.a2)) return false;
+				if (other.a2 != null) {
+					return false;
+				}
+			} else if (!a2.equals(other.a2)) {
+				return false;
+			}
 			return true;
 		}
 
+		@Override
 		public String toString () {
 			return a1.name + "->" + a2.name;
 		}

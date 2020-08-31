@@ -29,7 +29,7 @@
 
 package com.esotericsoftware.spine;
 
-import com.badlogic.gdx.graphics.Color;
+import org.joml.Vector4f;
 
 /** Stores the setup pose for a {@link Bone}. */
 public class BoneData {
@@ -42,12 +42,16 @@ public class BoneData {
 	boolean skinRequired;
 
 	// Nonessential.
-	final Color color = new Color(0.61f, 0.61f, 0.61f, 1); // 9b9b9bff
+	final Vector4f color = new Vector4f(0.61f, 0.61f, 0.61f, 1); // 9b9b9bff
 
 	/** @param parent May be null. */
 	public BoneData (int index, String name, BoneData parent) {
-		if (index < 0) throw new IllegalArgumentException("index must be >= 0.");
-		if (name == null) throw new IllegalArgumentException("name cannot be null.");
+		if (index < 0) {
+			throw new IllegalArgumentException("index must be >= 0.");
+		}
+		if (name == null) {
+			throw new IllegalArgumentException("name cannot be null.");
+		}
 		this.index = index;
 		this.name = name;
 		this.parent = parent;
@@ -56,7 +60,9 @@ public class BoneData {
 	/** Copy constructor.
 	 * @param parent May be null. */
 	public BoneData (BoneData bone, BoneData parent) {
-		if (bone == null) throw new IllegalArgumentException("bone cannot be null.");
+		if (bone == null) {
+			throw new IllegalArgumentException("bone cannot be null.");
+		}
 		index = bone.index;
 		name = bone.name;
 		this.parent = parent;
@@ -173,7 +179,9 @@ public class BoneData {
 	}
 
 	public void setTransformMode (TransformMode transformMode) {
-		if (transformMode == null) throw new IllegalArgumentException("transformMode cannot be null.");
+		if (transformMode == null) {
+			throw new IllegalArgumentException("transformMode cannot be null.");
+		}
 		this.transformMode = transformMode;
 	}
 
@@ -190,10 +198,11 @@ public class BoneData {
 
 	/** The color of the bone as it was in Spine. Available only when nonessential data was exported. Bones are not usually
 	 * rendered at runtime. */
-	public Color getColor () {
+	public Vector4f getColor () {
 		return color;
 	}
 
+	@Override
 	public String toString () {
 		return name;
 	}

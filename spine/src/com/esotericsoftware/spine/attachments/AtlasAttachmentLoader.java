@@ -43,38 +43,50 @@ public class AtlasAttachmentLoader implements AttachmentLoader {
 	private TextureAtlas atlas;
 
 	public AtlasAttachmentLoader (TextureAtlas atlas) {
-		if (atlas == null) throw new IllegalArgumentException("atlas cannot be null.");
+		if (atlas == null) {
+			throw new IllegalArgumentException("atlas cannot be null.");
+		}
 		this.atlas = atlas;
 	}
 
+	@Override
 	public RegionAttachment newRegionAttachment (Skin skin, String name, String path) {
 		AtlasRegion region = atlas.findRegion(path);
-		if (region == null) throw new RuntimeException("Region not found in atlas: " + path + " (region attachment: " + name + ")");
+		if (region == null) {
+			throw new RuntimeException("Region not found in atlas: " + path + " (region attachment: " + name + ")");
+		}
 		RegionAttachment attachment = new RegionAttachment(name);
 		attachment.setRegion(region);
 		return attachment;
 	}
 
+	@Override
 	public MeshAttachment newMeshAttachment (Skin skin, String name, String path) {
 		AtlasRegion region = atlas.findRegion(path);
-		if (region == null) throw new RuntimeException("Region not found in atlas: " + path + " (mesh attachment: " + name + ")");
+		if (region == null) {
+			throw new RuntimeException("Region not found in atlas: " + path + " (mesh attachment: " + name + ")");
+		}
 		MeshAttachment attachment = new MeshAttachment(name);
 		attachment.setRegion(region);
 		return attachment;
 	}
 
+	@Override
 	public BoundingBoxAttachment newBoundingBoxAttachment (Skin skin, String name) {
 		return new BoundingBoxAttachment(name);
 	}
 
+	@Override
 	public ClippingAttachment newClippingAttachment (Skin skin, String name) {
 		return new ClippingAttachment(name);
 	}
 
+	@Override
 	public PathAttachment newPathAttachment (Skin skin, String name) {
 		return new PathAttachment(name);
 	}
 
+	@Override
 	public PointAttachment newPointAttachment (Skin skin, String name) {
 		return new PointAttachment(name);
 	}

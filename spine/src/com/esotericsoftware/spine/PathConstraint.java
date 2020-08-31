@@ -91,7 +91,8 @@ public class PathConstraint implements Updatable {
 		update();
 	}
 
-	@SuppressWarnings("null")
+	@Override
+    @SuppressWarnings("null")
 	public void update () {
 		Attachment attachment = target.attachment;
 		if (!(attachment instanceof PathAttachment)) return;
@@ -501,6 +502,7 @@ public class PathConstraint implements Updatable {
 		this.target = target;
 	}
 
+	@Override
 	public boolean isActive () {
 		return active;
 	}

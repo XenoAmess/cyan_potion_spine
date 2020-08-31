@@ -29,13 +29,11 @@
 
 package com.esotericsoftware.spine.vertexeffects;
 
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.math.Interpolation;
-import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.math.Vector2;
 import com.esotericsoftware.spine.Skeleton;
 import com.esotericsoftware.spine.SkeletonRenderer.VertexEffect;
 import com.esotericsoftware.spine.utils.SpineUtils;
+import org.joml.Vector2f;
+import org.joml.Vector4f;
 
 public class SwirlEffect implements VertexEffect {
 	private float worldX, worldY, radius, angle;
@@ -46,12 +44,14 @@ public class SwirlEffect implements VertexEffect {
 		this.radius = radius;
 	}
 
+	@Override
 	public void begin (Skeleton skeleton) {
 		worldX = skeleton.getX() + centerX;
 		worldY = skeleton.getY() + centerY;
 	}
 
-	public void transform (Vector2 position, Vector2 uv, Color light, Color dark) {
+	@Override
+	public void transform (Vector2f position, Vector2f uv, Vector4f light, Vector4f dark) {
 		float x = position.x - worldX;
 		float y = position.y - worldY;
 		float dist = (float)Math.sqrt(x * x + y * y);
@@ -63,6 +63,7 @@ public class SwirlEffect implements VertexEffect {
 		}
 	}
 
+	@Override
 	public void end () {
 	}
 

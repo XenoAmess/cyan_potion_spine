@@ -29,11 +29,10 @@
 
 package com.esotericsoftware.spine.vertexeffects;
 
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.math.Vector2;
 import com.esotericsoftware.spine.Skeleton;
 import com.esotericsoftware.spine.SkeletonRenderer.VertexEffect;
+import org.joml.Vector2f;
+import org.joml.Vector4f;
 
 public class JitterEffect implements VertexEffect {
 	private float x, y;
@@ -43,14 +42,16 @@ public class JitterEffect implements VertexEffect {
 		this.y = y;
 	}
 
+	@Override
 	public void begin (Skeleton skeleton) {
 	}
 
-	public void transform (Vector2 position, Vector2 uv, Color light, Color dark) {
+	public void transform (Vector2f position, Vector2f uv, Vector4f light, Vector4f dark) {
 		position.x += MathUtils.randomTriangular(-x, y);
 		position.y += MathUtils.randomTriangular(-x, y);
 	}
 
+	@Override
 	public void end () {
 	}
 

@@ -31,13 +31,6 @@ package com.esotericsoftware.spine;
 
 import static com.esotericsoftware.spine.Animation.RotateTimeline.*;
 
-import com.badlogic.gdx.utils.ArrayList;
-import com.badlogic.gdx.utils.FloatArrayList;
-import com.badlogic.gdx.utils.IntArrayList;
-import com.badlogic.gdx.utils.IntSet;
-import com.badlogic.gdx.utils.Pool;
-import com.badlogic.gdx.utils.Pool.Poolable;
-
 import com.esotericsoftware.spine.Animation.AttachmentTimeline;
 import com.esotericsoftware.spine.Animation.DrawOrderTimeline;
 import com.esotericsoftware.spine.Animation.EventTimeline;
@@ -45,6 +38,7 @@ import com.esotericsoftware.spine.Animation.MixBlend;
 import com.esotericsoftware.spine.Animation.MixDirection;
 import com.esotericsoftware.spine.Animation.RotateTimeline;
 import com.esotericsoftware.spine.Animation.Timeline;
+import java.util.ArrayList;
 
 /** Applies animations over time, queues animations for later playback, mixes (crossfading) between animations, and applies
  * multiple animations on top of each other (layering).
@@ -114,7 +108,7 @@ public class AnimationState {
 	/** Increments each track entry {@link TrackEntry#getTrackTime()}, setting queued animations as current if needed. */
 	public void update (float delta) {
 		delta *= timeScale;
-		for (int i = 0, n = tracks.size; i < n; i++) {
+		for (int i = 0, n = tracks.size(); i < n; i++) {
 			TrackEntry current = tracks.get(i);
 			if (current == null) continue;
 

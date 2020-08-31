@@ -37,6 +37,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 
 import com.esotericsoftware.spine.Bone;
+import org.joml.Vector4f;
 
 /** An attachment that displays a textured quadrilateral.
  * <p>
@@ -56,7 +57,7 @@ public class RegionAttachment extends Attachment {
 	private float x, y, scaleX = 1, scaleY = 1, rotation, width, height;
 	private final float[] uvs = new float[8];
 	private final float[] offset = new float[8];
-	private final Color color = new Color(1, 1, 1, 1);
+	private final Vector4f color = new Vector4f(1, 1, 1, 1);
 
 	public RegionAttachment (String name) {
 		super(name);

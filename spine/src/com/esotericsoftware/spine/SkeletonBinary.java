@@ -74,6 +74,7 @@ import com.esotericsoftware.spine.attachments.PathAttachment;
 import com.esotericsoftware.spine.attachments.PointAttachment;
 import com.esotericsoftware.spine.attachments.RegionAttachment;
 import com.esotericsoftware.spine.attachments.VertexAttachment;
+import java.util.ArrayList;
 
 /** Loads skeleton data in the Spine binary format.
  * <p>

@@ -28,8 +28,7 @@
  *****************************************************************************/
 
 package com.esotericsoftware.spine;
-
-import com.badlogic.gdx.utils.ArrayList;
+import java.util.ArrayList;
 
 /** Stores the setup pose and all of the stateless data for a skeleton.
  * <p>
@@ -64,11 +63,15 @@ public class SkeletonData {
 	 * multiple times.
 	 * @return May be null. */
 	public BoneData findBone (String boneName) {
-		if (boneName == null) throw new IllegalArgumentException("boneName cannot be null.");
+		if (boneName == null) {
+			throw new IllegalArgumentException("boneName cannot be null.");
+		}
 		ArrayList<BoneData> bones = this.bones;
-		for (int i = 0, n = bones.size; i < n; i++) {
+		for (int i = 0, n = bones.size(); i < n; i++) {
 			BoneData bone = bones.get(i);
-			if (bone.name.equals(boneName)) return bone;
+			if (bone.name.equals(boneName)) {
+				return bone;
+			}
 		}
 		return null;
 	}
@@ -84,11 +87,15 @@ public class SkeletonData {
 	 * multiple times.
 	 * @return May be null. */
 	public SlotData findSlot (String slotName) {
-		if (slotName == null) throw new IllegalArgumentException("slotName cannot be null.");
+		if (slotName == null) {
+			throw new IllegalArgumentException("slotName cannot be null.");
+		}
 		ArrayList<SlotData> slots = this.slots;
-		for (int i = 0, n = slots.size; i < n; i++) {
+		for (int i = 0, n = slots.size(); i < n; i++) {
 			SlotData slot = slots.get(i);
-			if (slot.name.equals(slotName)) return slot;
+			if (slot.name.equals(slotName)) {
+				return slot;
+			}
 		}
 		return null;
 	}
@@ -112,9 +119,14 @@ public class SkeletonData {
 	 * multiple times.
 	 * @return May be null. */
 	public Skin findSkin (String skinName) {
-		if (skinName == null) throw new IllegalArgumentException("skinName cannot be null.");
-		for (Skin skin : skins)
-			if (skin.name.equals(skinName)) return skin;
+		if (skinName == null) {
+			throw new IllegalArgumentException("skinName cannot be null.");
+		}
+		for (Skin skin : skins) {
+			if (skin.name.equals(skinName)) {
+				return skin;
+			}
+		}
 		return null;
 	}
 
@@ -129,9 +141,14 @@ public class SkeletonData {
 	 * multiple times.
 	 * @return May be null. */
 	public EventData findEvent (String eventDataName) {
-		if (eventDataName == null) throw new IllegalArgumentException("eventDataName cannot be null.");
-		for (EventData eventData : events)
-			if (eventData.name.equals(eventDataName)) return eventData;
+		if (eventDataName == null) {
+			throw new IllegalArgumentException("eventDataName cannot be null.");
+		}
+		for (EventData eventData : events) {
+			if (eventData.name.equals(eventDataName)) {
+				return eventData;
+			}
+		}
 		return null;
 	}
 
@@ -151,11 +168,15 @@ public class SkeletonData {
 	 * call it multiple times.
 	 * @return May be null. */
 	public Animation findAnimation (String animationName) {
-		if (animationName == null) throw new IllegalArgumentException("animationName cannot be null.");
+		if (animationName == null) {
+			throw new IllegalArgumentException("animationName cannot be null.");
+		}
 		ArrayList<Animation> animations = this.animations;
-		for (int i = 0, n = animations.size; i < n; i++) {
+		for (int i = 0, n = animations.size(); i < n; i++) {
 			Animation animation = animations.get(i);
-			if (animation.name.equals(animationName)) return animation;
+			if (animation.name.equals(animationName)) {
+				return animation;
+			}
 		}
 		return null;
 	}
@@ -171,11 +192,15 @@ public class SkeletonData {
 	 * than to call it multiple times.
 	 * @return May be null. */
 	public IkConstraintData findIkConstraint (String constraintName) {
-		if (constraintName == null) throw new IllegalArgumentException("constraintName cannot be null.");
+		if (constraintName == null) {
+			throw new IllegalArgumentException("constraintName cannot be null.");
+		}
 		ArrayList<IkConstraintData> ikConstraints = this.ikConstraints;
-		for (int i = 0, n = ikConstraints.size; i < n; i++) {
+		for (int i = 0, n = ikConstraints.size(); i < n; i++) {
 			IkConstraintData constraint = ikConstraints.get(i);
-			if (constraint.name.equals(constraintName)) return constraint;
+			if (constraint.name.equals(constraintName)) {
+				return constraint;
+			}
 		}
 		return null;
 	}
@@ -191,11 +216,15 @@ public class SkeletonData {
 	 * this method than to call it multiple times.
 	 * @return May be null. */
 	public TransformConstraintData findTransformConstraint (String constraintName) {
-		if (constraintName == null) throw new IllegalArgumentException("constraintName cannot be null.");
+		if (constraintName == null) {
+			throw new IllegalArgumentException("constraintName cannot be null.");
+		}
 		ArrayList<TransformConstraintData> transformConstraints = this.transformConstraints;
-		for (int i = 0, n = transformConstraints.size; i < n; i++) {
+		for (int i = 0, n = transformConstraints.size(); i < n; i++) {
 			TransformConstraintData constraint = transformConstraints.get(i);
-			if (constraint.name.equals(constraintName)) return constraint;
+			if (constraint.name.equals(constraintName)) {
+				return constraint;
+			}
 		}
 		return null;
 	}
@@ -211,11 +240,15 @@ public class SkeletonData {
 	 * than to call it multiple times.
 	 * @return May be null. */
 	public PathConstraintData findPathConstraint (String constraintName) {
-		if (constraintName == null) throw new IllegalArgumentException("constraintName cannot be null.");
+		if (constraintName == null) {
+			throw new IllegalArgumentException("constraintName cannot be null.");
+		}
 		ArrayList<PathConstraintData> pathConstraints = this.pathConstraints;
-		for (int i = 0, n = pathConstraints.size; i < n; i++) {
+		for (int i = 0, n = pathConstraints.size(); i < n; i++) {
 			PathConstraintData constraint = pathConstraints.get(i);
-			if (constraint.name.equals(constraintName)) return constraint;
+			if (constraint.name.equals(constraintName)) {
+				return constraint;
+			}
 		}
 		return null;
 	}
@@ -321,6 +354,7 @@ public class SkeletonData {
 		this.fps = fps;
 	}
 
+	@Override
 	public String toString () {
 		return name != null ? name : super.toString();
 	}

@@ -49,6 +49,7 @@ public class SkeletonAttachment extends Attachment {
 		this.skeleton = skeleton;
 	}
 
+	@Override
 	public Attachment copy () {
 		SkeletonAttachment copy = new SkeletonAttachment(name);
 		copy.skeleton = skeleton;

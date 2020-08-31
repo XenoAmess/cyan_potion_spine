@@ -29,16 +29,6 @@
 
 package com.esotericsoftware.spine;
 
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.ArrayList;
-import com.badlogic.gdx.utils.FloatArrayList;
-import com.badlogic.gdx.utils.NumberUtils;
-import com.badlogic.gdx.utils.ShortArrayList;
-
 import com.esotericsoftware.spine.attachments.Attachment;
 import com.esotericsoftware.spine.attachments.ClippingAttachment;
 import com.esotericsoftware.spine.attachments.MeshAttachment;
@@ -46,6 +36,9 @@ import com.esotericsoftware.spine.attachments.RegionAttachment;
 import com.esotericsoftware.spine.attachments.SkeletonAttachment;
 import com.esotericsoftware.spine.utils.SkeletonClipping;
 import com.esotericsoftware.spine.utils.TwoColorPolygonBatch;
+import com.xenoamess.commons.primitive.collections.lists.array_lists.FloatArrayList;
+import org.joml.Vector2f;
+import org.joml.Vector4f;
 
 public class SkeletonRenderer {
 	static private final short[] quadTriangles = {0, 1, 2, 2, 3, 0};
@@ -54,12 +47,12 @@ public class SkeletonRenderer {
 	private final FloatArrayList vertices = new FloatArrayList(32);
 	private final SkeletonClipping clipper = new SkeletonClipping();
 	private VertexEffect vertexEffect;
-	private final Vector2 temp = new Vector2();
-	private final Vector2 temp2 = new Vector2();
-	private final Color temp3 = new Color();
-	private final Color temp4 = new Color();
-	private final Color temp5 = new Color();
-	private final Color temp6 = new Color();
+	private final Vector2f temp = new Vector2f();
+	private final Vector2f temp2 = new Vector2f();
+	private final Vector4f temp3 = new Vector4f();
+	private final Vector4f temp4 = new Vector4f();
+	private final Vector4f temp5 = new Vector4f();
+	private final Vector4f temp6 = new Vector4f();
 
 	/** Renders the specified skeleton. If the batch is a PolygonSpriteBatch, {@link #draw(PolygonSpriteBatch, Skeleton)} is
 	 * called. If the batch is a TwoColorPolygonBatch, {@link #draw(TwoColorPolygonBatch, Skeleton)} is called. Otherwise the
@@ -157,9 +150,9 @@ public class SkeletonRenderer {
 		if (batch == null) throw new IllegalArgumentException("batch cannot be null.");
 		if (skeleton == null) throw new IllegalArgumentException("skeleton cannot be null.");
 
-		Vector2 tempPosition = this.temp, tempUV = this.temp2;
-		Color tempLight1 = this.temp3, tempDark1 = this.temp4;
-		Color tempLight2 = this.temp5, tempDark2 = this.temp6;
+		Vector2f tempPosition = this.temp, tempUV = this.temp2;
+		Vector4f tempLight1 = this.temp3, tempDark1 = this.temp4;
+		Vector4f tempLight2 = this.temp5, tempDark2 = this.temp6;
 		VertexEffect vertexEffect = this.vertexEffect;
 		if (vertexEffect != null) vertexEffect.begin(skeleton);
 
@@ -283,7 +276,7 @@ public class SkeletonRenderer {
 		if (batch == null) throw new IllegalArgumentException("batch cannot be null.");
 		if (skeleton == null) throw new IllegalArgumentException("skeleton cannot be null.");
 
-		Vector2 tempPosition = this.temp, tempUV = this.temp2;
+		Vector2f tempPosition = this.temp, tempUV = this.temp2;
 		Color tempLight1 = this.temp3, tempDark1 = this.temp4;
 		Color tempLight2 = this.temp5, tempDark2 = this.temp6;
 		VertexEffect vertexEffect = this.vertexEffect;
@@ -411,7 +404,7 @@ public class SkeletonRenderer {
 	}
 
 	private void applyVertexEffect (float[] vertices, int verticesLength, int stride, float light, float dark) {
-		Vector2 tempPosition = this.temp, tempUV = this.temp2;
+		Vector2f tempPosition = this.temp, tempUV = this.temp2;
 		Color tempLight1 = this.temp3, tempDark1 = this.temp4;
 		Color tempLight2 = this.temp5, tempDark2 = this.temp6;
 		VertexEffect vertexEffect = this.vertexEffect;
@@ -473,7 +466,7 @@ public class SkeletonRenderer {
 	static public interface VertexEffect {
 		public void begin (Skeleton skeleton);
 
-		public void transform (Vector2 position, Vector2 uv, Color color, Color darkColor);
+		public void transform (Vector2f position, Vector2f uv, Color color, Color darkColor);
 
 		public void end ();
 	}

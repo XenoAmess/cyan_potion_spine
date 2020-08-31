@@ -29,7 +29,8 @@
 
 package com.esotericsoftware.spine;
 
-import com.badlogic.gdx.utils.ArrayList;
+
+import java.util.ArrayList;
 
 /** Stores the setup pose for a {@link PathConstraint}.
  * <p>
